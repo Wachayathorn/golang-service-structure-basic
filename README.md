@@ -1,1 +1,1 @@
-# golang-service-structure-basic
+# Golang basic project structure
