@@ -5,6 +5,7 @@ import (
 
 	"github.com/labstack/echo/v4"
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/config"
+	"github.com/wachayathorn/golang-service-structure-basic/pkg/handler/middlewares"
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/handler/routes"
 )
 
@@ -20,6 +21,7 @@ func main() {
 	}
 
 	routes.Init(e)
+	e.Use(middlewares.TimeConsumer)
 	e.Logger.Infof("Server start port:%s", port)
 
 	if err := e.Start(":" + port); err != nil {
