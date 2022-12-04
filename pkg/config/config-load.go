@@ -2,9 +2,9 @@ package config
 
 import (
 	"fmt"
-	"log"
 	"path/filepath"
 
+	"github.com/labstack/echo/v4"
 	"github.com/spf13/viper"
 )
 
@@ -33,22 +33,22 @@ func (c *Config) ParseState(env string) State {
 	}
 }
 
-func (c *Config) Load(env string) (string, error) {
+func (c *Config) Load(logger echo.Logger, env string) (string, error) {
 	vn := viper.New()
 	vn.AddConfigPath(filepath.Join(".", "pkg", "config", "resource"))     // Set path to load config.yml
 	vn.SetConfigName(fmt.Sprintf("config.%s", c.ParseState(string(env)))) // Load config file
 
 	if err := vn.ReadInConfig(); err != nil { // Read config from file
-		log.Fatalf("Read config error:%s", err.Error())
+		logger.Fatalf("Read config error:%s", err.Error())
 		return "", err
 	}
 
 	if err := c.binding(vn); err != nil {
-		log.Fatalf("Binding config error:%s", err.Error())
+		logger.Fatalf("Binding config error:%s", err.Error())
 		return "", err
 	}
 
-	log.Printf("Start server with site:%s", c.ParseState(string(env)))
+	logger.Infof("Start server with site:%s", c.ParseState(string(env)))
 	return c.Port, nil
 }
 

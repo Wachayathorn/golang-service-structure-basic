@@ -16,7 +16,7 @@ func main() {
 	env := flag.String("env", "local", "Environment")
 	c := config.Config{}
 
-	port, err := c.Load(*env)
+	port, err := c.Load(e.Logger, *env)
 	if err != nil {
 		e.Logger.Fatalf("Load config error:%s", err.Error())
 	}
