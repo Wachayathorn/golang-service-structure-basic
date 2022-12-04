@@ -29,5 +29,5 @@ func main() {
 		e.Logger.Fatalf("Start service error%s", err.Error())
 	}
 
-	utils.Init(&e.Logger)
+	utils.Init(e.Logger)
 }

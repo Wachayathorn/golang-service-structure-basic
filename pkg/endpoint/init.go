@@ -13,8 +13,8 @@ type Endpoint struct {
 	Service service.ServiceInterface
 }
 
-func Init() *Endpoint {
+func Init(logger echo.Logger) *Endpoint {
 	return &Endpoint{
-		Service: service.Init(),
+		Service: service.Init(logger),
 	}
 }

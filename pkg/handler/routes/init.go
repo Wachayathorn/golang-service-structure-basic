@@ -15,7 +15,7 @@ type Route struct {
 }
 
 func Init(e *echo.Echo) error {
-	endpoint := endpoint.Init()
+	endpoint := endpoint.Init(e.Logger)
 
 	routes := []Route{
 		Get(endpoint),
