@@ -7,6 +7,7 @@ import (
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/config"
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/handler/middlewares"
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/handler/routes"
+	"github.com/wachayathorn/golang-service-structure-basic/pkg/utils"
 )
 
 func main() {
@@ -27,4 +28,6 @@ func main() {
 	if err := e.Start(":" + port); err != nil {
 		e.Logger.Fatalf("Start service error%s", err.Error())
 	}
+
+	utils.Init(&e.Logger)
 }
