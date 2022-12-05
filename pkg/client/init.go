@@ -2,6 +2,7 @@ package client
 
 import (
 	"github.com/labstack/echo/v4"
+	"github.com/wachayathorn/golang-service-structure-basic/pkg/model"
 	"github.com/wachayathorn/golang-service-structure-basic/pkg/utils"
 )
 
@@ -9,6 +10,7 @@ type ClientAPI interface {
 	ReplaceUrl(url string)
 
 	Get() (string, error)
+	Post(req model.Post) (string, error)
 }
 
 type Client struct {

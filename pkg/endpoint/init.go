@@ -7,6 +7,7 @@ import (
 
 type EndpointInterface interface {
 	Get(c echo.Context) error
+	Post(c echo.Context) error
 }
 
 type Endpoint struct {

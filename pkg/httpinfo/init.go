@@ -6,10 +6,9 @@ type HttpInfo struct {
 	Data       interface{}
 }
 
-func NewHttpInfo(httpMethod, apiPath string, data interface{}) HttpInfo {
+func NewHttpInfo(httpMethod, apiPath string) HttpInfo {
 	return HttpInfo{
 		HttpMethod: httpMethod,
 		ApiPath:    apiPath,
-		Data:       data,
 	}
 }

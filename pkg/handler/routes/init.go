@@ -19,6 +19,7 @@ func Init(e *echo.Echo) error {
 
 	routes := []Route{
 		Get(endpoint),
+		Post(endpoint),
 	}
 
 	for _, route := range routes {
