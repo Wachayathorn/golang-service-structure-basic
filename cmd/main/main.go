@@ -13,10 +13,12 @@ import (
 func main() {
 	e := echo.New()
 
-	env := flag.String("env", "local", "Environment")
-	c := config.Config{}
+	var env string
+	flag.StringVar(&env, "env", "local", "Environment")
+	flag.Parse()
 
-	port, err := c.Load(e.Logger, *env)
+	c := config.Config{}
+	port, err := c.Load(e.Logger, env)
 	if err != nil {
 		e.Logger.Fatalf("Load config error:%s", err.Error())
 	}

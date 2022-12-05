@@ -48,7 +48,7 @@ func (c *Config) Load(logger echo.Logger, env string) (string, error) {
 		return "", err
 	}
 
-	logger.Infof("Start server with site:%s", c.ParseState(string(env)))
+	logger.Printf("Start server with site:%s", c.Env)
 	return c.Port, nil
 }
 
